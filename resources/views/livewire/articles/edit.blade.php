@@ -17,7 +17,7 @@ rules([
     'body' => 'required|string|max:5000',
 ]);
 $update = function () {
-    $this->validate();
+    $this->validate(); //バリテーションチェック
     $this->article->update($this->all());
     return redirect()->route('articles.show', $this->article);
 };
