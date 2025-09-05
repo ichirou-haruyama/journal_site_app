@@ -6,15 +6,15 @@ use App\Models\Article;
 state(['title', 'body']);
 
 // バリデーションルール
-rules([
-    'title' => 'required|string|max:50',
-    'body' => 'required|string|max:5000',
-]);
+//rules([
+    //'title' => 'required|string|max:50',
+    //'body' => 'required|string|max:5000',
+//]);
 
 // メモを保存する関数
 $store = function () {
     // フォームからの入力値をデータベースへ保存
-    Memo::create([
+    Article::create([
         'title' => $this->title,
         'body' => $this->body,
     ]);
@@ -30,7 +30,7 @@ $store = function () {
     <!-- wire:submit="store"でフォーム送信時にstore関数を呼び出し -->
     <form wire:submit="store">
         <p>
-            <label for="title">タイトル</label><br>
+            <label for="title">論文タイトル</label><br>
             <!-- wire:model="title"で入力値とコンポーネントの状態($this->title)を自動的に同期 -->
             <input type="text" wire:model="title" id="title">
         </p>
@@ -40,6 +40,6 @@ $store = function () {
             <textarea wire:model="body" id="body"></textarea>
         </p>
 
-        <button type="submit">登録</button>
+        <button type="submit">投稿</button>
     </form>
 </div>
